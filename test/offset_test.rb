@@ -20,7 +20,18 @@ class OffsetTest < Minitest::Test
     offset = Offset.new
     offset.date
 
-    assert_equal 1617487524, offset.squared_date
+    assert_equal "1617487524", offset.squared_date
   end
 
+  def test_last_four_digits
+    offset = Offset.new
+    offset.date
+    offset.squared_date
+    offset.last_four_digits
+
+    assert_equal [7], offset.a
+    assert_equal [5], offset.b
+    assert_equal [2], offset.c
+    assert_equal [4], offset.d
+  end
 end
