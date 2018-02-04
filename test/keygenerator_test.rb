@@ -1,6 +1,6 @@
-require_relative 'keygenerator'
 require 'minitest/autorun'
 require 'minitest/pride'
+require './lib/key_generator'
 
 class KeyGeneratorTest < Minitest::Test
   def test_that_key_generator_class_exists
