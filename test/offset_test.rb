@@ -10,8 +10,17 @@ class OffsetTest < Minitest::Test
     assert_instance_of Offset, offset
   end
 
+  def test_date_is_formatted_correctly
+    offset = Offset.new
 
+    assert_equal 40218, offset.date
+  end
 
+  def test_current_date_squared
+    offset = Offset.new
+    offset.date
 
+    assert_equal 1617487524, offset.squared_date
+  end
 
 end
