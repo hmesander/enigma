@@ -1,5 +1,9 @@
 class KeyGenerator
-  attr_reader :key
+  attr_reader :key,
+              :first_letter_rotation,
+              :second_letter_rotation,
+              :third_letter_rotation,
+              :fourth_letter_rotation
 
   def initialize
     @key = key
