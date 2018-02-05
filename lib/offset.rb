@@ -1,47 +1,37 @@
 require 'Date'
+require_relative 'key_generator'
+
+# Calculates the total rotations given a key and a date.
 class Offset
-  attr_reader :first_a_rotation,
-              :second_b_rotation,
-              :third_c_rotation,
-              :fourth_d_rotation
-  # :a, :b, :c, :d
+  attr_reader :date, :key
 
-  # def initialize
-  #   @a = []
-  #   @b = []
-  #   @c = []
-  #   @d = []
-  # end
-
-  def date
-    current_date = Date.today.strftime('%d%m%y')
-    current_date.to_i
+  def initialize(key = KeyGenerator.new.new_key,
+                 date = Date.today.strftime('%d%m%y'))
+    @key = key
+    @date = date
   end
 
   def squared_date
-     (date**2).to_s
+    (date.to_i**2).to_s
   end
 
-  # def last_four_digits
-  #   @a << squared_date[-4].to_i
-  #   @b << squared_date[-3].to_i
-  #   @c << squared_date[-2].to_i
-  #   @d << squared_date[-1].to_i
-  # end
-
-  def first_a_rotation
-    squared_date[-4].to_i
+  def last_four_digits
+    squared_date[-4..-1]
   end
 
-  def second_b_rotation
-    squared_date[-3].to_i
+  def a_rotation
+    @key[0..1].to_i + squared_date[-4].to_i
   end
 
-  def third_c_rotation
-    squared_date[-2].to_i
+  def b_rotation
+    @key[1..2].to_i + squared_date[-3].to_i
   end
 
-  def fourth_d_rotation
-    squared_date[-1].to_i
+  def c_rotation
+    @key[2..3].to_i + squared_date[-2].to_i
+  end
+
+  def d_rotation
+    @key[3..4].to_i + squared_date[-1].to_i
   end
 end
