@@ -28,7 +28,6 @@ class OffsetTest < Minitest::Test
     offset = Offset.new
     generated_key = offset.key
 
-
     expected = offset.last_four_digits[-4].to_i + generated_key[0..1].to_i
     actual = offset.a_rotation
 
