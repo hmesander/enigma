@@ -3,7 +3,7 @@ require_relative 'key_generator'
 
 # Calculates the total rotations given a key and a date.
 class Offset
-  attr_reader :date
+  attr_reader :date, :key
 
   def initialize(key = KeyGenerator.new.new_key, date = Date.today.strftime('%d%m%y'))
     @key = key

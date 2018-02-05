@@ -25,9 +25,11 @@ class OffsetTest < Minitest::Test
   end
 
   def test_a_total_rotation
-    offset = Offset.new('12345')
+    offset = Offset.new
+    generated_key = offset.key
 
-    expected = offset.last_four_digits[-4] + 12
+
+    expected = offset.last_four_digits[-4].to_i + generated_key[0..1].to_i
     actual = offset.a_rotation
 
     assert_equal expected, actual
