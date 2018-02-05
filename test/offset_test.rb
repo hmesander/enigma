@@ -14,21 +14,23 @@ class OffsetTest < Minitest::Test
     offset = Offset.new
     offset.date
 
-    assert_equal '1617487524', offset.squared_date
+    assert_equal offset.date**2, offset.squared_date
   end
 
   def test_last_four_digits
     offset = Offset.new
     offset.squared_date
 
-    assert_equal '7524', offset.last_four_digits
+    assert_equal offset.squared_date[-4..-1], offset.last_four_digits
   end
 
   def test_a_total_rotation
-    offset = Offset.new
-    offset.squared_date
+    offset = Offset.new('12345')
 
-    assert_equal 3, offset.a_rotation
+    expected = offset.last_four_digits[-4] + 12
+    actual = offset.a_rotation
+
+    assert_equal expected, actual
   end
 
   def test_b_total_rotation
